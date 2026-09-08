@@ -1,0 +1,5 @@
+OPEN ONLY THIS SOLUTION FILE:
+OPEN_THIS_GymFitness_NET48.sln
+
+This final project targets .NET Framework 4.8.
+Do not open an older solution from Visual Studio Recent Projects.
