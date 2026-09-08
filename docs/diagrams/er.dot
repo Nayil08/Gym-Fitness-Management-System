@@ -1,0 +1,21 @@
+digraph ER {
+ graph [rankdir=LR,bgcolor="white",pad="0.4",nodesep="0.55",ranksep="0.8"];
+ node [shape=box,style="rounded,filled",fillcolor="#F4F8FB",color="#22577A",fontname="Arial",fontsize=11];
+ edge [color="#4D6675",fontname="Arial",fontsize=9];
+ User; Gym; Trainer; Category; Item; Offer; Cart; CartItem; Order; OrderItem; Review; Payment;
+ User -> Gym [label="owns (Admin)",arrowhead=crowodot];
+ Gym -> Trainer [label="has",arrowhead=crow];
+ Gym -> Item [label="lists",arrowhead=crow];
+ Category -> Item [label="classifies",arrowhead=crow];
+ Item -> Offer [label="has",arrowhead=crow];
+ User -> Cart [label="Customer owns",arrowhead=tee];
+ Cart -> CartItem [label="contains",arrowhead=crow];
+ Item -> CartItem [label="selected in",arrowhead=crow];
+ User -> Order [label="Customer places",arrowhead=crow];
+ Order -> OrderItem [label="contains",arrowhead=crow];
+ Item -> OrderItem [label="appears in",arrowhead=crow];
+ Gym -> OrderItem [label="sold by",arrowhead=crow];
+ User -> Review [label="Customer writes",arrowhead=crow];
+ Item -> Review [label="receives",arrowhead=crow];
+ Order -> Payment [label="has",arrowhead=tee];
+}

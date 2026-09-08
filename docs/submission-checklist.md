@@ -1,0 +1,28 @@
+# Submission Checklist
+
+- [x] Project domain: Gym & Fitness
+- [x] Exactly 3 login roles: Super Admin, Admin/Gym Owner, Customer
+- [x] Multi-gym marketplace concept
+- [x] Case study included in final report
+- [x] Functional requirements included
+- [x] User stories included
+- [x] UI navigation diagram included
+- [x] SQL schema diagram included
+- [x] ER diagram included as bonus-quality material
+- [x] Database is 3NF and has more than 6 tables
+- [x] PK, FK, UNIQUE and CHECK constraints used
+- [x] `OrderItems` junction table included
+- [x] SQL file includes sample data: 1 Super Admin, 2 Admins, 3 Customers
+- [x] SQL examples include JOIN, GROUP BY, HAVING, SUM, AVG, COUNT
+- [x] Search and at least 3 filters included
+- [x] Product/service/membership CRUD included
+- [x] Cart, checkout, invoice/order history included
+- [x] Rating 1-5 + written review included
+- [x] Offers/discounts included
+- [x] Low stock alert included
+- [x] Platform commission included
+- [x] Data isolation by GymId included
+- [x] 12+ UI mockups/screenshots included
+- [x] Validation states included in UI mockups/report
+- [x] GitHub-ready repository structure included
+- [x] Working role-routing C# source included as bonus implementation

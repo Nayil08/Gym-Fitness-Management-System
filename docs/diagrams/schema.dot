@@ -1,0 +1,32 @@
+digraph DB {
+ graph [rankdir=LR,bgcolor="white",pad="0.3",nodesep="0.4",ranksep="0.65"];
+ node [shape=record,fontname="Arial",fontsize=9,style="filled",fillcolor="#F8FBFD",color="#22577A"];
+ edge [color="#657D8B",arrowsize=0.7];
+ Users [label="{Users|UserId PK\lFullName\lEmail UNIQUE\lPasswordHash\lPhone\lAddress\lUserType CHECK\lStatus CHECK\lCreatedAt\l}"];
+ Gyms [label="{Gyms|GymId PK\lOwnerUserId FK UNIQUE\lGymName\lAddress\lContact\lStatus CHECK\lCommissionRate CHECK\l}"];
+ Categories [label="{Categories|CategoryId PK\lCategoryName UNIQUE\lDescription\l}"];
+ Trainers [label="{Trainers|TrainerId PK\lGymId FK\lTrainerName\lSpecialization\lPhone\lExperienceYears CHECK\lAvailability\l}"];
+ Items [label="{Items|ItemId PK\lGymId FK\lCategoryId FK\lItemName\lItemType CHECK\lPrice CHECK\lStockQty CHECK\lMinStock CHECK\lDescription\lIsAvailable\l}"];
+ Offers [label="{Offers|OfferId PK\lItemId FK\lDiscountPercent CHECK\lStartDate\lEndDate\lIsActive\l}"];
+ Carts [label="{Carts|CartId PK\lCustomerUserId FK UNIQUE\lUpdatedAt\l}"];
+ CartItems [label="{CartItems|CartItemId PK\lCartId FK\lItemId FK\lQuantity CHECK\lUNIQUE(CartId,ItemId)\l}"];
+ Orders [label="{Orders|OrderId PK\lCustomerUserId FK\lOrderDate\lTotalAmount\lPlatformCommission\lPaymentMethod\lPaymentStatus CHECK\lOrderStatus CHECK\l}"];
+ OrderItems [label="{OrderItems|OrderItemId PK\lOrderId FK\lItemId FK\lGymId FK\lQuantity\lUnitPrice\lDiscountAmount\lSubtotal\l}"];
+ Reviews [label="{Reviews|ReviewId PK\lCustomerUserId FK\lItemId FK\lRating CHECK 1-5\lComment\lReviewDate\lIsVisible\lUNIQUE(CustomerUserId,ItemId)\l}"];
+ Payments [label="{Payments|PaymentId PK\lOrderId FK UNIQUE\lAmount\lMethod\lReferenceNo UNIQUE\lPaidAt\lStatus CHECK\l}"];
+ Users -> Gyms [label=" owner 1:0..1"];
+ Gyms -> Trainers [label="1:M"];
+ Gyms -> Items [label="1:M"];
+ Categories -> Items [label="1:M"];
+ Items -> Offers [label="1:M"];
+ Users -> Carts [label="customer 1:1"];
+ Carts -> CartItems [label="1:M"];
+ Items -> CartItems [label="1:M"];
+ Users -> Orders [label="customer 1:M"];
+ Orders -> OrderItems [label="1:M"];
+ Items -> OrderItems [label="1:M"];
+ Gyms -> OrderItems [label="1:M"];
+ Users -> Reviews [label="customer 1:M"];
+ Items -> Reviews [label="1:M"];
+ Orders -> Payments [label="1:1"];
+}
