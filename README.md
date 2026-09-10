@@ -119,3 +119,6 @@ Passwords are stored as SHA-256 hashes in the sample database.
 
 ## Submission Material
 The `docs` folder contains the report, diagrams and 12+ UI mockups/screenshots. The project root is GitHub-ready and follows consistent lower-case/hyphenated screenshot filenames.
+
+Contributor: Sadia Arifin shimu
+Contribution: UI layout fixes,customer flow testing and form validation
