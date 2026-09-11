@@ -120,6 +120,10 @@ Passwords are stored as SHA-256 hashes in the sample database.
 ## Submission Material
 The `docs` folder contains the report, diagrams and 12+ UI mockups/screenshots. The project root is GitHub-ready and follows consistent lower-case/hyphenated screenshot filenames.
 
-Contributor: MD.Abid Hossain Bevor 
-Contribution: Admindash board , Gym profile management , Coustomer review , viwe , sales and earnings view, product/service management, profile management
-Customer module contribution: dashboard, gym profile, product/service management, trainer management, inventory and low-stock monitoring, sales/earnings, offers/discounts, customer reviews, profile management, and UI testing.
+**Contributor:** MD.Abid Hossain Bevor 
+
+
+ **Contribution:** Admindash board , Gym profile management , Coustomer review , viwe , sales and earnings view, product/service management, profile management.
+
+ 
+ **Customer module contribution:** dashboard, gym profile, product/service management, trainer management, inventory and low-stock monitoring, sales/earnings, offers/discounts, customer reviews, profile management, and UI testing.
