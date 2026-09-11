@@ -9,7 +9,7 @@ namespace GymAndFitnessManagementSystem.Forms
     {
         public CustomerDashboardForm()
         {
-            Theme.Apply(this, "Customer Dashboard");
+            startposition = FormstartPosition.centerScreen; Theme.Apply(this, "Customer Dashboard");
 
             // MAIN LAYOUT
             var root = new TableLayoutPanel();
