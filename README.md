@@ -122,3 +122,4 @@ The `docs` folder contains the report, diagrams and 12+ UI mockups/screenshots. 
 
 Contributor: Sadia Arifin shimu
 Contribution: UI layout fixes,customer flow testing and form validation
+Customer module contribution:browse item,cart,checkout,invoice,reviews and profile testing/UI improvement.
