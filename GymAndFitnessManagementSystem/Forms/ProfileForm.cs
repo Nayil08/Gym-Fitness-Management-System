@@ -1,2 +1,147 @@
-using System;using System.Windows.Forms;using GymAndFitnessManagementSystem.Common;using GymAndFitnessManagementSystem.Data;
-namespace GymAndFitnessManagementSystem.Forms{public class ProfileForm:Form{TextBox n=Theme.Text(),ph=Theme.Text(),a=Theme.Text(),pw=Theme.Text();Label email=new Label();public ProfileForm(){Theme.Apply(this,"Profile");Size=new System.Drawing.Size(650,580);Controls.Add(Theme.Header("Profile & Password"));var p=new Panel{Dock=DockStyle.Fill,Padding=new Padding(110,30,110,30)};Controls.Add(p);string[] l={"Full Name","Phone","Address","New Password (optional)"};TextBox[] x={n,ph,a,pw};int y=35;email.SetBounds(110,y,400,30);p.Controls.Add(email);y+=45;for(int i=0;i<4;i++){p.Controls.Add(new Label{Text=l[i],Left=110,Top=y,Width=360});y+=24;x[i].SetBounds(110,y,360,30);p.Controls.Add(x[i]);y+=50;}pw.UseSystemPasswordChar=true;var b=Theme.Button("Save",Save);b.SetBounds(110,y,160,42);p.Controls.Add(b);var c=Theme.Button("Close",(o,e)=>Close());c.SetBounds(290,y,160,42);p.Controls.Add(c);Load+=(o,e)=>LoadData();}void LoadData(){var t=Repositories.Profile(Session.UserId);var r=t.Rows[0];n.Text=r["FullName"].ToString();ph.Text=r["Phone"].ToString();a.Text=r["Address"].ToString();email.Text="Email: "+r["Email"]+"   |   Role: "+r["UserType"];}void Save(object o,EventArgs e){if(string.IsNullOrWhiteSpace(n.Text)){MessageBox.Show("Name is required.");return;}if(!string.IsNullOrWhiteSpace(pw.Text)&&pw.Text.Length<6){MessageBox.Show("New password must be at least 6 characters.");return;}Repositories.UpdateProfile(Session.UserId,n.Text,ph.Text,a.Text,pw.Text);Session.FullName=n.Text;MessageBox.Show("Profile updated.");pw.Clear();}}}
+using System;
+using System.Windows.Forms;
+using GymAndFitnessManagementSystem.Common;
+using GymAndFitnessManagementSystem.Data;
+
+namespace GymAndFitnessManagementSystem.Forms
+{
+    public class ProfileForm : Form
+    {
+        TextBox n = Theme.Text();
+        TextBox ph = Theme.Text();
+        TextBox a = Theme.Text();
+        TextBox pw = Theme.Text();
+        TextBox cpw = Theme.Text();
+
+        Label email = new Label();
+
+        public ProfileForm()
+        {
+            Theme.Apply(this, "Profile");
+            Size = new System.Drawing.Size(650, 650);
+
+            Controls.Add(Theme.Header("Profile & Password"));
+
+            var p = new Panel
+            {
+                Dock = DockStyle.Fill,
+                Padding = new Padding(110, 30, 110, 30)
+            };
+
+            Controls.Add(p);
+
+            string[] l =
+            {
+                "Full Name",
+                "Phone",
+                "Address",
+                "New Password (optional)",
+                "Confirm New Password"
+            };
+
+            TextBox[] x =
+            {
+                n,
+                ph,
+                a,
+                pw,
+                cpw
+            };
+
+            int y = 35;
+
+            email.SetBounds(110, y, 400, 30);
+            p.Controls.Add(email);
+
+            y += 45;
+
+            for (int i = 0; i < 5; i++)
+            {
+                p.Controls.Add(new Label
+                {
+                    Text = l[i],
+                    Left = 110,
+                    Top = y,
+                    Width = 360
+                });
+
+                y += 24;
+
+                x[i].SetBounds(110, y, 360, 30);
+                p.Controls.Add(x[i]);
+
+                y += 50;
+            }
+
+            pw.UseSystemPasswordChar = true;
+            cpw.UseSystemPasswordChar = true;
+
+            var b = Theme.Button("Save", Save);
+            b.SetBounds(110, y, 160, 42);
+            p.Controls.Add(b);
+
+            var c = Theme.Button("Close", (o, e) => Close());
+            c.SetBounds(290, y, 160, 42);
+            p.Controls.Add(c);
+
+            Load += (o, e) => LoadData();
+        }
+
+        void LoadData()
+        {
+            var t = Repositories.Profile(Session.UserId);
+            var r = t.Rows[0];
+
+            n.Text = r["FullName"].ToString();
+            ph.Text = r["Phone"].ToString();
+            a.Text = r["Address"].ToString();
+
+            email.Text =
+                "Email: " + r["Email"] +
+                "   |   Role: " + r["UserType"];
+        }
+
+        void Save(object o, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(n.Text))
+            {
+                MessageBox.Show("Name is required.");
+                return;
+            }
+
+            if (!string.IsNullOrWhiteSpace(pw.Text))
+            {
+                if (pw.Text.Length < 6)
+                {
+                    MessageBox.Show(
+                        "New password must be at least 6 characters."
+                    );
+                    return;
+                }
+
+                if (pw.Text != cpw.Text)
+                {
+                    MessageBox.Show(
+                        "New password and confirm password do not match."
+                    );
+                    return;
+                }
+            }
+
+            Repositories.UpdateProfile(
+                Session.UserId,
+                n.Text,
+                ph.Text,
+                a.Text,
+                pw.Text
+            );
+
+            Session.FullName = n.Text;
+
+            MessageBox.Show("Profile updated.");
+
+            pw.Clear();
+            cpw.Clear();
+        }
+    }
+}
